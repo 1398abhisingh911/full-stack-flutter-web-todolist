@@ -3,18 +3,16 @@ import path from "path";
 import dotenv from "dotenv";
 import { TodoList } from "./database/entities/todo.entity";
 const isCompiled = path.extname(__filename).includes("js");
-
 dotenv.config();
-
-export default   {
+export default {
   url: process.env.DATABASE_URL,
-  ssl: {rejectUnauthorized:false},
+  ssl: { rejectUnauthorized: false },
   type: "postgres",
   host: process.env.Host || "localhost",
-  port: process.env.DB_Port||5432,
-  username: process.env.User||"postgres",
-  password:  process.env.DB_Password||"123456789",
-  database:  process.env.Database||"postgres",
+  port: process.env.DB_Port || 5432,
+  username: process.env.User || "postgres",
+  password: process.env.DB_Password || "123456789",
+  database: process.env.Database || "postgres",
   synchronize: !process.env.DB_NO_SYNC,
   logging: !process.env.DB_NO_LOGS,
   autoReconnect: true,

@@ -1,9 +1,10 @@
 import { Connection, createConnection, getConnection } from "typeorm";
 import ormconfig from "../../ormconfig";
-
- const DBConnect = async () => {
+export const DBConnect = async () => {
   let connection: Connection | undefined;
-  connection = getConnection();
+  try {
+    connection = getConnection();
+  } catch (e) {}
   try {
     if (connection) {
       if (!connection.isConnected) {
@@ -22,7 +23,5 @@ import ormconfig from "../../ormconfig";
 export const TryDBConnect = async () => {
   try {
     await DBConnect();
-   
-  } catch (e) {
-  }
+  } catch (e) {}
 };
